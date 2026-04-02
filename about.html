@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nate Eide</title>
+  <style>
+    :root {
+      --bg: #f5f4f1;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --accent: #4a6fa5;
+      --rule: #d8d6d0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141414;
+        --text: #e8e6e1;
+        --muted: #8a8a8a;
+        --accent: #7ba3d4;
+        --rule: #2e2e2e;
+      }
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 18px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+      padding: 5vw 6vw;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 2.8rem;
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.4rem;
+      font-weight: normal;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      margin-bottom: 0.85rem;
+    }
+
+    .subhead {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 560px;
+      line-height: 1.6;
+    }
+
+    section {
+      margin-bottom: 2.6rem;
+    }
+
+    section p + p {
+      margin-top: 1rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.6rem;
+    }
+
+    @media (max-width: 560px) {
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      h1 {
+        font-size: 1.85rem;
+      }
+    }
+
+    .col-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .care-list {
+      list-style: none;
+      border-left: 2px solid var(--rule);
+      padding-left: 1.1rem;
+    }
+
+    .care-list li {
+      margin-bottom: 0.55rem;
+      font-size: 0.97rem;
+    }
+
+    .care-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .good-at p {
+      font-size: 0.97rem;
+    }
+
+    .currently p + p {
+      margin-top: 0.6rem;
+    }
+
+    .contact {
+      border-top: 1px solid var(--rule);
+      padding-top: 1.6rem;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Nate Eide</h1>
+    <p class="subhead">I build and scale engineering organizations. Not the code. The teams, the systems, the culture, and the conditions that let good engineers do their best work.</p>
+  </header>
+
+  <section>
+    <p>I've spent the better part of 15 years leading engineering at companies where the product is complex, the customers are demanding, and the stakes are real.</p>
+    <p>At Axway, I led global engineering teams building enterprise B2B integration platforms — the plumbing that moves sensitive data between large organizations at scale. Thousands of enterprise customers. Regulated industries. The kind of software that can't go down.</p>
+    <p>At SimSpace, I scaled an engineering org from 50 to over 100 people while modernizing a cloud-native platform used to train the people who defend US critical infrastructure. Fast growth, hard problems, high standards.</p>
+    <p>I'm currently looking for my next VP or CTO role — remote, at a company where engineering leadership actually matters to the outcome.</p>
+  </section>
+
+  <div class="two-col">
+    <div>
+      <p class="col-label">What I care about</p>
+      <ul class="care-list">
+        <li>Engineering organizations that are healthy, not just productive</li>
+        <li>Clarity over process — knowing why before how</li>
+        <li>Leaders who build other leaders</li>
+        <li>Honest conversations about tradeoffs</li>
+      </ul>
+    </div>
+    <div class="good-at">
+      <p class="col-label">What I'm good at</p>
+      <p>Scaling teams through growth phases. Building engineering culture that retains good people. Translating between business and engineering without losing either side. Owning delivery without micromanaging it.</p>
+    </div>
+  </div>
+
+  <section class="currently">
+    <p class="col-label">Currently</p>
+    <p>Open to VP Engineering, SVP Engineering, Head of Engineering, and CTO roles. Remote US. Based in Phoenix, AZ.</p>
+    <p>Building <a href="https://luci.blue">Blue Luci</a> on the side — an indie app studio. It's where I stay close to the work.</p>
+  </section>
+
+  <footer class="contact">
+    <a href="https://www.linkedin.com/in/nateeide">LinkedIn</a> &middot; <a href="mailto:nate@eide.us">nate@eide.us</a>
+  </footer>
+
+</body>
+</html>
