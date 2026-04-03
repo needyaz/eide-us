@@ -310,42 +310,74 @@
 
     .exp-header {
       display: flex;
-      justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 0.3rem;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.55rem;
+      margin-bottom: 0.5rem;
     }
 
     .exp-company {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: var(--text);
       font-weight: normal;
+    }
+
+    .exp-sep {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .exp-role {
+      font-size: 0.9rem;
+      color: var(--soft);
     }
 
     .exp-years {
       font-size: 0.78rem;
       color: var(--muted);
       letter-spacing: 0.03em;
+      margin-left: auto;
       flex-shrink: 0;
-      margin-left: 1rem;
     }
 
-    .exp-role {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+    .exp-context {
+      font-style: italic;
+      font-size: 0.85rem;
       color: var(--muted);
-      margin-bottom: 1.1rem;
+      margin-bottom: 1rem;
     }
 
-    .exp-desc {
+    .exp-desc p {
       font-size: 0.95rem;
-      line-height: 1.8;
+      line-height: 1.82;
+      color: var(--soft);
+    }
+    .exp-desc p + p { margin-top: 1rem; }
+
+    .tech-foundations {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .tech-foundations h3 {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-weight: normal;
+    }
+
+    .tech-foundations p {
+      font-size: 0.95rem;
+      line-height: 1.82;
       color: var(--soft);
     }
 
     .education {
-      margin-top: 2.5rem;
+      margin-top: 2rem;
       font-size: 0.85rem;
       color: var(--muted);
     }
@@ -493,24 +525,81 @@
     <p class="section-label fade-in">Experience</p>
     <h2 class="section-heading fade-in">Where I've worked.</h2>
     <div class="experience-list">
+
       <div class="experience-item fade-in">
         <div class="exp-header">
           <span class="exp-company">SimSpace</span>
-          <span class="exp-years">2022-2024</span>
+          <span class="exp-sep">|</span>
+          <span class="exp-role">VP of Engineering</span>
+          <span class="exp-years">2022-2025</span>
         </div>
-        <p class="exp-role">VP Engineering</p>
-        <p class="exp-desc">Scaled the engineering organization from ~50 to 100+ engineers during a period of rapid platform modernization. Led cloud-native infrastructure work supporting US Cyber Command and critical infrastructure defense training.</p>
+        <p class="exp-context">Cyber range platform with $50M+ ARR, used by US Cyber Command and 200,000+ VMs worldwide.</p>
+        <div class="exp-desc">
+          <p>Scaled engineering from 50 to 100+ engineers and rebuilt the org structure from the ground up: clear ownership, defined leadership layers, and delivery accountability where none had existed before. Turned a team that chronically missed commitments into one that delivered planned work reliably enough for the executive team to commit the roadmap to enterprise customers quarters in advance.</p>
+          <p>Drove cloud-native platform evolution across multi-cloud infrastructure in environments subject to federal security requirements. Partnered with principal engineers on Kubernetes orchestration, multi-region failover, and cost optimization that reduced cloud spend while improving reliability. Introduced an AI tooling strategy across the org, deploying GitHub Copilot and Claude with a governance framework, plus targeted agentic AI pilots with MLOps guardrails. Integrated engineering teams from an acquired company, aligning culture, tooling, and delivery practices across previously separate teams. Partnered with CTO, executives, and board on technical strategy and multi-year budget planning.</p>
+        </div>
       </div>
+
+      <div class="experience-item fade-in">
+        <div class="exp-header">
+          <span class="exp-company">Workrise</span>
+          <span class="exp-sep">|</span>
+          <span class="exp-role">Sr. Director of Engineering</span>
+          <span class="exp-years">2021-2022</span>
+        </div>
+        <p class="exp-context">Open talent marketplace for skilled labor; $750M+ funding, ~$100M ARR.</p>
+        <div class="exp-desc">
+          <p>Owned and scaled a 70+ engineer division, hiring aggressively at all levels and building out management structure across multiple product lines. Led engineering for marketplace matching algorithm improvements and a React-based mobile-first redesign that measurably increased worker engagement and reduced time-to-fill. Mobile became the primary channel for worker interactions.</p>
+        </div>
+      </div>
+
+      <div class="experience-item fade-in">
+        <div class="exp-header">
+          <span class="exp-company">Soaren Management</span>
+          <span class="exp-sep">|</span>
+          <span class="exp-role">VP of Technology</span>
+          <span class="exp-years">2019-2021</span>
+        </div>
+        <p class="exp-context">Privately held fintech, 150+ employees, configurable lending and engagement platforms.</p>
+        <div class="exp-desc">
+          <p>Built Engineering, Product, and UX from the ground up: team structure, leadership hiring, and delivery practices where none had existed. Delivered a customer-facing portal and multi-channel communication platform that reduced support burden and let the business scale without proportional headcount growth.</p>
+        </div>
+      </div>
+
+      <div class="experience-item fade-in">
+        <div class="exp-header">
+          <span class="exp-company">RetailMeNot</span>
+          <span class="exp-sep">|</span>
+          <span class="exp-role">Director of Engineering</span>
+          <span class="exp-years">2017-2019</span>
+        </div>
+        <p class="exp-context">Destination web and mobile platform for retail savings, $400M in revenue, millions of monthly active users.</p>
+        <div class="exp-desc">
+          <p>Led 40+ engineers across Phoenix and Kyiv. Drove architectural direction for migration from monolith to microservices across a React-based consumer platform, defining service boundaries, data consistency patterns, and observability approaches that improved system performance and team autonomy.</p>
+        </div>
+      </div>
+
       <div class="experience-item fade-in">
         <div class="exp-header">
           <span class="exp-company">Axway</span>
-          <span class="exp-years">12 years</span>
+          <span class="exp-sep">|</span>
+          <span class="exp-role">Director of R&amp;D</span>
+          <span class="exp-years">2005-2017</span>
         </div>
-        <p class="exp-role">VP Engineering and prior roles</p>
-        <p class="exp-desc">Led global engineering teams building enterprise B2B integration and secure data exchange platforms. 11,000+ enterprise customers across regulated industries including healthcare, financial services, and logistics.</p>
+        <p class="exp-context">Global integration leader; &euro;300M revenue, &euro;200M ARR, 11,000+ enterprise customers.</p>
+        <div class="exp-desc">
+          <p>Built and led a global engineering organization of 100+ across Phoenix, Bucharest, Bangalore, Malm&ouml;, and Berlin. Led engineering across a portfolio of products assembled through multiple acquisitions, unifying teams, codebases, and delivery practices serving enterprise customers in healthcare, financial services, and supply chain. Drove platform modernization from monolithic on-premise architecture to cloud-capable SaaS delivery, enabling customers to meet evolving compliance and scale requirements.</p>
+        </div>
       </div>
+
     </div>
-    <p class="education fade-in">University of Michigan</p>
+
+    <div class="tech-foundations fade-in">
+      <h3>Technical Foundations</h3>
+      <p>Background in distributed systems on AWS and GCP, including event-driven architectures, data pipelines, and multi-region patterns. Engage meaningfully with senior engineers on tradeoffs across performance, cost, reliability, and complexity. Teams I've led primarily work in Go, Python, and Java ecosystems with modern observability stacks. I use Claude Code as a primary development workflow for personal and side projects, with firsthand experience driving AI adoption and tooling governance inside engineering organizations.</p>
+    </div>
+
+    <p class="education fade-in">Earlier: TransCore, Vcommerce, SalesLogix, University of Michigan Institute of Social Research.<br>B.S. Computer Science, University of Michigan.</p>
   </div>
 </section>
 
