@@ -4,7 +4,568 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nate Eide</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    :root {
+      --bg:     #111110;
+      --bg2:    #1a1a19;
+      --text:   #e4dfd7;
+      --soft:   #96918b;
+      --muted:  #4f4f4c;
+      --accent: #6b8fa8;
+      --rule:   #252523;
+      --nav-h:  56px;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg:     #f8f7f5;
+        --bg2:    #f0eee9;
+        --text:   #1c1c1a;
+        --soft:   #555550;
+        --muted:  #9a958f;
+        --accent: #3d6a94;
+        --rule:   #dedad4;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-top: var(--nav-h);
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── NAV ── */
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+
+    .nav-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.97rem;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .nav-name:hover { text-decoration: none; color: var(--text); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      color: var(--soft);
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text);
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      z-index: 99;
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--soft);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav a:hover { color: var(--text); text-decoration: none; }
+
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ── HERO ── */
+
+    .hero {
+      display: flex;
+      align-items: stretch;
+      min-height: calc(100vh - var(--nav-h));
+    }
+
+    .hero-photo {
+      width: 44%;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .hero-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: bottom center;
+      display: block;
+    }
+
+    .hero-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 5rem 4rem 5rem;
+    }
+
+    .hero-content h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.25rem);
+      font-weight: normal;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--soft);
+      max-width: 460px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-social {
+      display: flex;
+      gap: 1.75rem;
+    }
+    .hero-social a {
+      font-size: 0.85rem;
+      color: var(--accent);
+      letter-spacing: 0.01em;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
+    }
+    .hero-social a:hover { text-decoration: none; opacity: 0.75; }
+
+    @media (max-width: 860px) {
+      .hero-content { padding: 3.5rem 3rem; }
+    }
+
+    @media (max-width: 680px) {
+      .hero {
+        flex-direction: column;
+        min-height: auto;
+      }
+      .hero-photo {
+        width: 100%;
+        height: 46vw;
+        min-height: 220px;
+        position: relative;
+      }
+      .hero-content {
+        padding: 2.5rem 1.5rem 3.5rem;
+      }
+      .hero-tagline { font-size: 1rem; max-width: none; }
+    }
+
+    /* ── SECTIONS ── */
+
+    section {
+      padding: 6rem 0;
+      scroll-margin-top: var(--nav-h);
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    h2.section-heading {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      font-weight: normal;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 2.5rem;
+    }
+
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── ABOUT ── */
+
+    #about { border-top: 1px solid var(--rule); }
+
+    .about-prose p {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: var(--soft);
+    }
+    .about-prose p + p { margin-top: 1.25rem; }
+
+    /* ── WHAT I DO ── */
+
+    #services { border-top: 1px solid var(--rule); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 4rem;
+      row-gap: 3rem;
+    }
+
+    .service-item {
+      border-top: 1px solid var(--accent);
+      padding-top: 1.5rem;
+    }
+
+    .service-item h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1rem;
+      font-weight: normal;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.35;
+    }
+
+    .service-item p {
+      font-size: 0.92rem;
+      line-height: 1.78;
+      color: var(--soft);
+    }
+
+    @media (max-width: 560px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── EXPERIENCE ── */
+
+    #experience { border-top: 1px solid var(--rule); }
+
+    .experience-list { display: flex; flex-direction: column; }
+
+    .experience-item {
+      padding: 2.25rem 0;
+      border-top: 1px solid var(--rule);
+    }
+    .experience-item:last-of-type { border-bottom: 1px solid var(--rule); }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.3rem;
+    }
+
+    .exp-company {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.1rem;
+      color: var(--text);
+      font-weight: normal;
+    }
+
+    .exp-years {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+
+    .exp-role {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .exp-desc {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--soft);
+    }
+
+    .education {
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ── NOW ── */
+
+    #now { border-top: 1px solid var(--rule); }
+
+    .now-prose p {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: var(--soft);
+    }
+    .now-prose p + p { margin-top: 1.25rem; }
+
+    /* ── CONTACT ── */
+
+    #contact { border-top: 1px solid var(--rule); }
+
+    .contact-lede {
+      font-size: 1.05rem;
+      line-height: 1.78;
+      color: var(--soft);
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .contact-links a {
+      font-size: 0.97rem;
+      display: inline-block;
+    }
+
+    /* ── FOOTER ── */
+
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── FADE IN ── */
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
 </head>
 <body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-name">Nate Eide</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#now">Now</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Open menu" id="hamburger-btn">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#about"      onclick="closeNav()">About</a>
+  <a href="#experience" onclick="closeNav()">Experience</a>
+  <a href="#now"        onclick="closeNav()">Now</a>
+  <a href="#contact"    onclick="closeNav()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-photo">
+    <img src="nate-cutout.jpeg" alt="Nate Eide">
+  </div>
+  <div class="hero-content">
+    <h1>Nate Eide</h1>
+    <p class="hero-eyebrow">Engineering Leader</p>
+    <p class="hero-tagline">I build and scale engineering organizations. Not the code. The teams, the systems, the culture, and the conditions that let good engineers do their best work.</p>
+    <div class="hero-social">
+      <a href="https://linkedin.com/in/nate-eide" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label fade-in">About</p>
+    <h2 class="section-heading fade-in">Building teams that build things that matter.</h2>
+    <div class="about-prose">
+      <p class="fade-in">I've spent my career leading engineering at companies where the product is complex, the customers are demanding, and the stakes are real.</p>
+      <p class="fade-in">At Axway, I led global engineering teams building enterprise B2B integration platforms: the infrastructure that moves sensitive data between large organizations at scale. Thousands of enterprise customers. Regulated industries. Software that cannot go down.</p>
+      <p class="fade-in">At SimSpace, I scaled an engineering org from 50 to over 100 people while modernizing a cloud-native platform used to train the people who defend US critical infrastructure. Fast growth, hard problems, high standards.</p>
+      <p class="fade-in">I'm currently looking for my next VP or CTO role. Remote, at a company where engineering leadership actually matters to the outcome.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I DO -->
+<section id="services">
+  <div class="container">
+    <p class="section-label fade-in">What I Do</p>
+    <h2 class="section-heading fade-in">Where I focus.</h2>
+    <div class="services-grid">
+      <div class="service-item fade-in">
+        <h3>Scaling Engineering Orgs</h3>
+        <p>From hiring plans to team structure to leadership development. I've done this through rapid growth phases and know what breaks and what holds.</p>
+      </div>
+      <div class="service-item fade-in">
+        <h3>Delivery and Operational Excellence</h3>
+        <p>Predictable delivery isn't luck. It's metrics, process, culture, and honest conversations about tradeoffs. I build the conditions for it.</p>
+      </div>
+      <div class="service-item fade-in">
+        <h3>Cloud-Native Platform Engineering</h3>
+        <p>Kubernetes, microservices, CI/CD, multi-cloud. I've led teams building and modernizing platforms that have to run at enterprise scale.</p>
+      </div>
+      <div class="service-item fade-in">
+        <h3>Executive Partnership</h3>
+        <p>I work across product, sales, finance, and the board. Engineering strategy that connects to business outcomes, not just technical ones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label fade-in">Experience</p>
+    <h2 class="section-heading fade-in">Where I've worked.</h2>
+    <div class="experience-list">
+      <div class="experience-item fade-in">
+        <div class="exp-header">
+          <span class="exp-company">SimSpace</span>
+          <span class="exp-years">2022-2024</span>
+        </div>
+        <p class="exp-role">VP Engineering</p>
+        <p class="exp-desc">Scaled the engineering organization from ~50 to 100+ engineers during a period of rapid platform modernization. Led cloud-native infrastructure work supporting US Cyber Command and critical infrastructure defense training.</p>
+      </div>
+      <div class="experience-item fade-in">
+        <div class="exp-header">
+          <span class="exp-company">Axway</span>
+          <span class="exp-years">12 years</span>
+        </div>
+        <p class="exp-role">VP Engineering and prior roles</p>
+        <p class="exp-desc">Led global engineering teams building enterprise B2B integration and secure data exchange platforms. 11,000+ enterprise customers across regulated industries including healthcare, financial services, and logistics.</p>
+      </div>
+    </div>
+    <p class="education fade-in">University of Michigan</p>
+  </div>
+</section>
+
+<!-- NOW -->
+<section id="now">
+  <div class="container">
+    <p class="section-label fade-in">Now</p>
+    <h2 class="section-heading fade-in">What I'm doing.</h2>
+    <div class="now-prose">
+      <p class="fade-in">Open to VP Engineering, SVP Engineering, Head of Engineering, and CTO roles. Remote US. Based in Phoenix, AZ.</p>
+      <p class="fade-in">On the side, I'm building <a href="https://luci.blue" target="_blank" rel="noopener">Blue Luci</a>, an indie app studio. It keeps me close to the work.</p>
+      <p class="fade-in">I write occasionally on LinkedIn about engineering leadership, team building, and what job postings for senior roles keep getting wrong.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label fade-in">Contact</p>
+    <h2 class="section-heading fade-in">Let's Talk</h2>
+    <p class="contact-lede fade-in">If you're building something that needs engineering leadership, I'd like to hear about it.</p>
+    <div class="contact-links fade-in">
+      <a href="https://linkedin.com/in/nate-eide" target="_blank" rel="noopener">linkedin.com/in/nate-eide</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; <span id="year"></span> Nate Eide</p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var nav = document.getElementById('mobile-nav');
+  document.getElementById('hamburger-btn').addEventListener('click', function() {
+    nav.classList.toggle('open');
+  });
+  function closeNav() { nav.classList.remove('open'); }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-in').forEach(function(el) {
+    observer.observe(el);
+  });
+</script>
+
 </body>
 </html>
