@@ -6,22 +6,24 @@
   <title>Nate Eide</title>
   <style>
     :root {
-      --bg: #f7f6f3;
-      --text: #1c1c1c;
-      --soft: #4a4a4a;
-      --muted: #888;
+      --bg: #faf9f7;
+      --text: #2a2a2a;
+      --soft: #555;
+      --muted: #999;
       --accent: #3d5a80;
-      --rule: #e0ddd7;
+      --rule: #e8e5e0;
+      --avatar-bg: #3d5a80;
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #141413;
-        --text: #e0ddd7;
-        --soft: #aaa;
+        --bg: #131312;
+        --text: #dedad3;
+        --soft: #999;
         --muted: #666;
         --accent: #7aadd4;
-        --rule: #2c2b29;
+        --rule: #272724;
+        --avatar-bg: #2a3f5a;
       }
     }
 
@@ -40,142 +42,169 @@
     }
 
     .wrap {
-      max-width: 680px;
+      max-width: 620px;
       margin: 0 auto;
-      padding: 5rem 2rem 6rem;
+      padding: 5rem 1.75rem 6rem;
     }
 
-    /* ── Name & intro ── */
+    /* ── Avatar ── */
+
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--avatar-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .avatar-initials {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      font-family: Georgia, serif;
+    }
+
+    /* ── Header ── */
 
     header {
-      margin-bottom: 4rem;
+      margin-bottom: 3rem;
     }
 
     h1 {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 2.5rem;
+      font-size: 1.75rem;
       font-weight: normal;
       letter-spacing: -0.02em;
-      line-height: 1.1;
+      line-height: 1.2;
       color: var(--text);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
     }
 
     .role {
       font-size: 0.88rem;
       color: var(--muted);
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.4rem;
     }
 
     .lede {
-      font-size: 1.15rem;
-      line-height: 1.7;
+      font-size: 1.05rem;
+      line-height: 1.72;
       color: var(--soft);
-      max-width: 560px;
     }
 
-    /* ── Body sections ── */
+    /* ── Divider ── */
 
-    .body-section {
-      margin-bottom: 3rem;
+    .divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 2.5rem 0;
     }
 
-    .body-section p {
-      font-size: 1rem;
-      line-height: 1.8;
+    /* ── Body text ── */
+
+    .prose p {
+      font-size: 0.97rem;
+      line-height: 1.82;
       color: var(--text);
     }
 
-    .body-section p + p {
-      margin-top: 1.1rem;
+    .prose p + p {
+      margin-top: 1rem;
     }
 
     /* ── Beliefs ── */
 
     .beliefs {
-      margin: 3.5rem 0;
-      padding: 2.5rem 0;
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
+      margin-top: 2.5rem;
     }
 
-    .beliefs-label {
-      font-size: 0.72rem;
+    .section-label {
+      font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.15em;
       color: var(--muted);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .beliefs ol {
       list-style: none;
-      counter-reset: beliefs;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      counter-reset: n;
     }
 
     .beliefs ol li {
-      counter-increment: beliefs;
+      counter-increment: n;
       display: grid;
-      grid-template-columns: 1.8rem 1fr;
-      gap: 0.5rem;
-      font-size: 0.98rem;
+      grid-template-columns: 1.5rem 1fr;
+      font-size: 0.95rem;
       line-height: 1.55;
       color: var(--text);
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .beliefs ol li:first-child {
+      border-top: 1px solid var(--rule);
     }
 
     .beliefs ol li::before {
-      content: counter(beliefs);
+      content: counter(n);
       color: var(--muted);
-      font-size: 0.78rem;
-      padding-top: 0.18rem;
-      font-variant-numeric: tabular-nums;
+      font-size: 0.72rem;
+      padding-top: 0.22rem;
     }
 
     /* ── Strengths ── */
 
     .strengths {
-      margin-bottom: 3.5rem;
+      margin-top: 2.5rem;
     }
 
     .strengths p {
-      font-size: 0.98rem;
-      line-height: 1.8;
+      font-size: 0.95rem;
+      line-height: 1.78;
       color: var(--soft);
     }
 
-    /* ── Bottom ── */
+    /* ── Footer ── */
 
-    .bottom {
-      padding-top: 3rem;
+    footer {
+      margin-top: 3rem;
+      padding-top: 2rem;
       border-top: 1px solid var(--rule);
-      display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
     }
 
-    .meta-label {
-      font-size: 0.72rem;
+    .foot-label {
+      font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.15em;
       color: var(--muted);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
     }
 
-    .meta-block p {
-      font-size: 0.92rem;
+    .foot-block p, .foot-block a {
+      font-size: 0.9rem;
       line-height: 1.65;
       color: var(--soft);
+      display: block;
     }
 
-    .meta-block p + p {
-      margin-top: 0.35rem;
-    }
-
-    .contact-line {
-      font-size: 0.92rem;
-      color: var(--soft);
+    .foot-block p + p {
+      margin-top: 0.3rem;
     }
 
     a {
@@ -187,18 +216,9 @@
       text-decoration: underline;
     }
 
-    @media (max-width: 500px) {
-      .wrap {
-        padding: 3rem 1.25rem 4rem;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      .lede {
-        font-size: 1.05rem;
-      }
+    @media (max-width: 480px) {
+      .wrap { padding: 3rem 1.25rem 4rem; }
+      footer { grid-template-columns: 1fr; gap: 1.5rem; }
     }
   </style>
 </head>
@@ -206,12 +226,19 @@
 <div class="wrap">
 
   <header>
+    <div class="avatar">
+      <!-- swap img in when you have a photo:
+           <img src="nate.jpg" alt="Nate Eide"> -->
+      <span class="avatar-initials">NE</span>
+    </div>
     <h1>Nate Eide</h1>
-    <p class="role">Engineering Leader &mdash; Phoenix, AZ</p>
+    <p class="role">Engineering Leader &middot; Phoenix, AZ</p>
     <p class="lede">I build and scale engineering organizations. Not the code. The teams, the systems, the culture, and the conditions that let good engineers do their best work.</p>
   </header>
 
-  <section class="body-section">
+  <hr class="divider">
+
+  <section class="prose">
     <p>I've spent the better part of 15 years leading engineering at companies where the product is complex, the customers are demanding, and the stakes are real.</p>
     <p>At Axway, I led global engineering teams building enterprise B2B integration platforms &mdash; the plumbing that moves sensitive data between large organizations at scale. Thousands of enterprise customers. Regulated industries. The kind of software that can't go down.</p>
     <p>At SimSpace, I scaled an engineering org from 50 to over 100 people while modernizing a cloud-native platform used to train the people who defend US critical infrastructure. Fast growth, hard problems, high standards.</p>
@@ -219,7 +246,7 @@
   </section>
 
   <div class="beliefs">
-    <p class="beliefs-label">What I believe</p>
+    <p class="section-label">What I believe</p>
     <ol>
       <li>Engineering organizations should be healthy, not just productive</li>
       <li>Clarity over process &mdash; know why before how</li>
@@ -228,25 +255,22 @@
     </ol>
   </div>
 
-  <section class="strengths">
+  <div class="strengths">
     <p>Scaling teams through growth phases. Building engineering culture that retains good people. Translating between business and engineering without losing either side. Owning delivery without micromanaging it.</p>
-  </section>
-
-  <div class="bottom">
-    <div class="meta-block">
-      <p class="meta-label">Currently</p>
-      <p>Open to VP Engineering, SVP Engineering, Head of Engineering, and CTO roles. Remote US.</p>
-      <p>Building <a href="https://luci.blue">Blue Luci</a> on the side &mdash; an indie app studio. It's where I stay close to the work.</p>
-    </div>
-    <div class="meta-block">
-      <p class="meta-label">Contact</p>
-      <p class="contact-line">
-        <a href="https://www.linkedin.com/in/nate-eide/">LinkedIn</a>
-        &nbsp;&middot;&nbsp;
-        <a href="mailto:nate@eide.us">nate@eide.us</a>
-      </p>
-    </div>
   </div>
+
+  <footer>
+    <div class="foot-block">
+      <p class="foot-label">Currently</p>
+      <p>Open to VP, SVP, Head of Engineering, and CTO roles. Remote US.</p>
+      <p style="margin-top:0.4rem">Building <a href="https://luci.blue">Blue Luci</a> on the side &mdash; an indie app studio.</p>
+    </div>
+    <div class="foot-block">
+      <p class="foot-label">Contact</p>
+      <a href="https://www.linkedin.com/in/nate-eide/">LinkedIn</a>
+      <a href="mailto:nate@eide.us">nate@eide.us</a>
+    </div>
+  </footer>
 
 </div>
 </body>
